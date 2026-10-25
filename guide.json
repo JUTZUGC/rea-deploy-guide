@@ -1,0 +1,106 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "rea",
+    "nameCn": "REA",
+    "repoName": "rea-deploy-guide",
+    "oneLiner": "给 AI Agent 用的逆向工程 MCP 工具集",
+    "officialRepo": "https://github.com/morluto/rea",
+    "officialDocs": "https://rea.tools/get-started/",
+    "stars": "381k",
+    "license": "MIT",
+    "highlights": [
+      "用途：从一个 App 的行为一路追到原生二进制，搞清功能是怎么实现的",
+      "可分析：JavaScript / Electron、.NET、原生二进制、Go、WASM、IL2CPP、SQLite、HAR / SAZ 抓包、GPU code objects",
+      "接入方式：`npx rea-agents setup` 可自动注册到 Claude Code / Codex / Cursor / Gemini CLI 等，也支持手动 MCP",
+      "本地分析：代码与结果都留在本机，不上传"
+    ],
+    "mcpSupport": "REA 本身就是 MCP server，核心能力通过 MCP 工具交给 Agent，默认用精简 schema 降低上下文占用。手动注册的命令是 `npx -y rea-agents@6.8.0 mcp`；原生二进制分析要先配好 Hopper / Ghidra / IDA，Linux 上 Ghidra / JADX / 固件流程还要求 PATH 里有 procps 的 `ps`。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-25",
+    "verification": [
+      [
+        "npm 包 rea-agents@6.8.0（engines、bin）可查",
+        "已核对 2026-10-25"
+      ],
+      [
+        "Node 版本检查：本机 v22.14.0 被正确拒绝并给出提示",
+        "已验证 2026-10-25"
+      ],
+      [
+        "MCP 服务握手与工具列表（initialize / tools/list）",
+        "已验证 2026-10-25"
+      ],
+      [
+        "非目标宿主调用被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-10-25"
+      ]
+    ],
+    "deploy": {
+      "type": "script",
+      "requires": [
+        "node"
+      ],
+      "steps": [
+        "node -e \"const [a,b,c]=process.versions.node.split('.').map(Number);const ok=(a===22&&b>=23)||(a===24&&b>=22)||(a===26&&(b>12||(b===12&&c>=1)))||a>26;if(!ok){console.error('REA 需要 Node 22.23.4+ / 24.22.1+ / 26.12.1+，当前 '+process.versions.node);process.exit(1)}\"",
+        "npm install --global rea-agents",
+        "rea --help"
+      ],
+      "stepsPs": [
+        "node -e \"const [a,b,c]=process.versions.node.split('.').map(Number);const ok=(a===22&&b>=23)||(a===24&&b>=22)||(a===26&&(b>12||(b===12&&c>=1)))||a>26;if(!ok){console.error('REA 需要 Node 22.23.4+ / 24.22.1+ / 26.12.1+，当前 '+process.versions.node);process.exit(1)}\" ; if ($LASTEXITCODE -ne 0) { throw 'Node 版本不满足 REA 要求（22.23.4+ / 24.22.1+ / 26.12.1+）' }",
+        "npm install --global rea-agents",
+        "rea --help"
+      ],
+      "source": "https://rea.tools/get-started/"
+    },
+    "pitfalls": [
+      "Node 版本不够会直接报错：先跑 `node --version`，确认是 22.23.4+ / 24.22.1+ / 26.12.1+，再用 nvm 或官网安装包升级",
+      "Linux 全局安装报 EACCES：不要用 sudo 装，改用 nvm 或设置 npm 的 prefix",
+      "提示 `rea: command not found`：npm 全局 bin 目录没进 PATH，重开终端或按 npm 提示加进 PATH",
+      "首次 npx 慢是正常的（解包约 49 MB）；网络差可先 `npm config set registry https://registry.npmmirror.com`",
+      "原生分析报找不到引擎：先装 Hopper / Ghidra / IDA 之一，或在 setup 时选择安装 Hopper",
+      "Linux 上 Ghidra / JADX / 固件流程报进程检查失败：装 procps / procps-ng，确认 `ps` 在 PATH",
+      "setup 会改 Agent 配置：它会先给计划并备份原配置，确认后再批准；只想试用就用 `npx rea-agents@6.8.0 mcp` 手动注册",
+      "只分析你有权限的软件；不要用它绕过授权、破解或规避版权保护"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/rea-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/rea-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "REA 安装教程",
+    "rea-agents",
+    "REA MCP",
+    "逆向工程 AI",
+    "AI 逆向分析",
+    "Ghidra MCP",
+    "二进制分析工具",
+    "REA 使用",
+    "REA 中文教程",
+    "rea deploy guide"
+  ],
+  "topics": [
+    "reverse-engineering",
+    "mcp",
+    "ai-agent",
+    "binary-analysis",
+    "ghidra",
+    "cli",
+    "developer-tools"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "rea-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}
