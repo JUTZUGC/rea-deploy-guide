@@ -8,7 +8,7 @@
     "oneLiner": "给 AI Agent 用的逆向工程 MCP 工具集",
     "officialRepo": "https://github.com/morluto/rea",
     "officialDocs": "https://rea.tools/get-started/",
-    "stars": "381k",
+    "stars": "386k",
     "license": "MIT",
     "highlights": [
       "用途：从一个 App 的行为一路追到原生二进制，搞清功能是怎么实现的",
