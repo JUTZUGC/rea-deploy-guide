@@ -2,7 +2,7 @@
 set -euo pipefail
 # REA 一键部署脚本（第三方指南）——按官方文档封装
 # 官方文档：https://rea.tools/get-started/
-# 更新日期：2026-10-25
+# 更新日期：2026-10-28
 # 类型：script
 cd "$(dirname "${BASH_SOURCE[0]}")"
 

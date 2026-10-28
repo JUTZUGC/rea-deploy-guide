@@ -8,7 +8,7 @@
     "oneLiner": "给 AI Agent 用的逆向工程 MCP 工具集",
     "officialRepo": "https://github.com/morluto/rea",
     "officialDocs": "https://rea.tools/get-started/",
-    "stars": "386k",
+    "stars": "399.7k",
     "license": "MIT",
     "highlights": [
       "用途：从一个 App 的行为一路追到原生二进制，搞清功能是怎么实现的",
@@ -19,7 +19,7 @@
     "mcpSupport": "REA 本身就是 MCP server，核心能力通过 MCP 工具交给 Agent，默认用精简 schema 降低上下文占用。手动注册的命令是 `npx -y rea-agents@6.8.0 mcp`；原生二进制分析要先配好 Hopper / Ghidra / IDA，Linux 上 Ghidra / JADX / 固件流程还要求 PATH 里有 procps 的 `ps`。",
     "webuiUrl": "",
     "adapterPorts": "",
-    "collectedAt": "2026-10-25",
+    "collectedAt": "2026-10-28",
     "verification": [
       [
         "npm 包 rea-agents@6.8.0（engines、bin）可查",
